@@ -1,21 +1,13 @@
-<!DOCTYPE html>
+body {
+  font-family: "Helvetica Neue", "Segoe UI", helvetica, verdana, sans-serif !important;
+}
 
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8"> /
-    <meta name="viewpoint" content="width= device-width, intiial-scale=1.0"> 
-    <meta name="keywords" content="HTML, CSS"> // able to search keywords 
-    <meta name="description" content="This auto help application keeps track of your vehicle maintenance">
-<body>
-    <a href="Schedule Appointment">Home Page</a>
-    <a href="Road side assistance">Home Page</a>
-    <a href="Alerts">Home Page</a>
-    <a href="Calendar">Home Page</a>
-    <a href="Settings">Home Page</a>
-    <h2>Vehicle Maintenance Tracker</h2>
-    <p>
-    </p>
-</body>
-
-</html>
+/************************************ NAV BAR PAGE ****************************************/
+.navbar {
+  font-size: 20px;
+  background-image: url("https://visual-aids.s3-us-west-1.amazonaws.com/tire-pros/services/routine-vehicle-maintenance/routine-vehicle-maintenance-main.jpg");
+  background-size: cover;
+  /* background: rgba(4, 135, 94, 0.815); */
+  height: 75px;
+  text-align: end;
+}
