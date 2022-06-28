@@ -1,3 +1,21 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"> /
+    <meta name="viewpoint" content="width= device-width, intiial-scale=1.0"> 
+    <meta name="keywords" content="HTML, CSS"> // able to search keywords 
+    <meta name="description" content="This auto help application keeps track of your vehicle maintenance">
+<body>
+    <a href="Schedule Appointment">Home Page</a>
+    <a href="Road side assistance">Home Page</a>
+    <a href="Alerts">Home Page</a>
+    <a href="Calendar">Home Page</a>
+    <a href="Settings">Home Page</a>
+    <h2>Vehicle Maintenance Tracker</h2>
+    <p>
+    </p>
+</body>
+
+</html>
