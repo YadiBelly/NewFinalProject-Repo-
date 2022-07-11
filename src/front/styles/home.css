@@ -5,19 +5,22 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
-.belldiv {
-  display: flex;
-  margin: 20px;
-}
 .bell {
   font-size: 100px;
+  margin-right: 10px;
+  padding-bottom: 50px;
 }
 .uppercase {
-    text-align: center;
-}
-.card-body {
-  display: flex;
+  text-align: center;
 }
 .que {
-  font-size: 100px;
+  font-size: 70px;
+  margin-right: 0px;
+  padding-bottom: 30px;
+}
+.belle {
+          display: flex;
+}
+.quee{
+  display: flex;
 }
