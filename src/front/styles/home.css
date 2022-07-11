@@ -10,8 +10,14 @@
   margin: 20px;
 }
 .bell {
-  font-size: 200px;
+  font-size: 100px;
 }
-.page {
-  font-size: 20px;
+.uppercase {
+    text-align: center;
+}
+.card-body {
+  display: flex;
+}
+.que {
+  font-size: 100px;
 }
