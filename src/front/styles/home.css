@@ -5,6 +5,7 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
 .bell {
   font-size: 100px;
   margin-right: 10px;
@@ -12,6 +13,7 @@
 }
 .uppercase {
   text-align: center;
+  color: black;
 }
 .que {
   font-size: 70px;
@@ -23,4 +25,6 @@
 }
 .quee{
   display: flex;
-}
+
+
+
