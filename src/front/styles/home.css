@@ -5,6 +5,26 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+.bell {
+  font-size: 100px;
+  margin-right: 10px;
+  padding-bottom: 50px;
+}
 .uppercase {
+  text-align: center;
   color: black;
 }
+.que {
+  font-size: 70px;
+  margin-right: 0px;
+  padding-bottom: 30px;
+}
+.belle {
+          display: flex;
+}
+.quee{
+  display: flex;
+
+
+
