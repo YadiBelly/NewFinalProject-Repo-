@@ -6,9 +6,14 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
+
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Calendar } from "./pages/calendar";
+
+//import { EditProfile } from "./pages/EditProfile";
+//import { ForgotPassword } from "./pages/ForgotPassword";
+//import { PasswordReset } from "./pages/PasswordReset";
 
 //create your first component
 const Layout = () => {
@@ -21,6 +26,7 @@ const Layout = () => {
       <BrowserRouter basename={basename}>
         <ScrollToTop>
           <Navbar />
+          <switch>
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Calendar />} path="/calendar" />
@@ -28,6 +34,7 @@ const Layout = () => {
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
+          </switch>
           <Footer />
         </ScrollToTop>
       </BrowserRouter>
