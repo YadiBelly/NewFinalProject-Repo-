@@ -6,11 +6,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AiOutlineBell } from "react-icons/ai";
 import { BsQuestionLg } from "react-icons/bs";
 import vmt from "../../img/vmt.png";
+import { Link } from "react-router-dom";
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
+
+    <div className="text-center mt-5">
+      <div class="container-fluid">
+        <Link to="/calendar" class="navbar-brand">
+          Schedule appointment
+        </Link>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
     <div>
       <p className="uppercase mt-5">
         <img src={vmt} />
@@ -27,6 +48,7 @@ export const Home = () => {
             obtaining details on why a particular service is needed.
           </strong>
         </p>
+
       </div>
       <div className="quee">
         <BsQuestionLg className="que" />
