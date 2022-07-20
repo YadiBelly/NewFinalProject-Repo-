@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AiOutlineBell } from "react-icons/ai";
 import { BsQuestionLg } from "react-icons/bs";
 import vmt from "../../img/vmt.png";
+import { Link } from "react-router-dom";
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -13,12 +15,10 @@ export const Home = () => {
   return (
     <div className="text-center mt-5">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <Link to="/calendar" class="navbar-brand">
           Schedule appointment
-        </a>
-        <a class="navbar-brand" href="#">
-          Calendar
-        </a>
+        </Link>
+
         <button
           class="navbar-toggler"
           type="button"
