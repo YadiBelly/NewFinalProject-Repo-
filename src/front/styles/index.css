@@ -5,9 +5,12 @@ body {
 /************************************ NAV BAR PAGE ****************************************/
 .navbar {
   font-size: 20px;
-  background-image: url("https://visual-aids.s3-us-west-1.amazonaws.com/tire-pros/services/routine-vehicle-maintenance/routine-vehicle-maintenance-main.jpg");
+  background-color: darkgrey;
   background-size: cover;
   /* background: rgba(4, 135, 94, 0.815); */
   height: 75px;
   text-align: end;
+}
+.h1 {
+  color: black;
 }
