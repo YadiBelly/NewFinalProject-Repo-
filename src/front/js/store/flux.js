@@ -16,6 +16,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			createAccount: (first_name, last_name, email, password, phone, zip_code) => {
+					fetch(process.env.BACKEND_URL + '/api/signup',{
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify(first_name, last_name, email, password, phone, zip_code)
+					})
+					.then((result) => console.log(result))
+					.catch((error) => console.log('error', error))
+
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
@@ -29,9 +39,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+					}catch(error){
 					console.log("Error loading message from backend", error)
-				}
+					}
 			},
 			changeColor: (index, color) => {
 				//get the store

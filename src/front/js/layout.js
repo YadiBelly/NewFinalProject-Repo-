@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Calendar } from "./pages/calendar";
+import { CreateAccount } from "./pages/CreateAccount";
 
 //import { EditProfile } from "./pages/EditProfile";
 //import { ForgotPassword } from "./pages/ForgotPassword";
@@ -31,6 +32,7 @@ const Layout = () => {
             <Route element={<Home />} path="/" />
             <Route element={<Calendar />} path="/calendar" />
             <Route element={<Demo />} path="/demo" />
+            <Route element={<CreateAccount />} path="/CreateAccount" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
