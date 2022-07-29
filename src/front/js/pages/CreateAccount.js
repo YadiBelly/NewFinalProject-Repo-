@@ -67,8 +67,8 @@ export const CreateAccount = (props) => {
               zip_code
             })} class="btn btn-primary">Sign in</button>
         <div>
-        <Link to="/forgotPassword">
-          <a className="nav-link">Forgot my password??</a>
+        <Link to="/forgot">
+          <a className="nav-link">Forgot your password?</a>
         </Link>
       </div>
         </div> 
