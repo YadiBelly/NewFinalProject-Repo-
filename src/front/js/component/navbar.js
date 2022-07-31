@@ -8,7 +8,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-light d-flex">
       <div className="d-flex justify-content-start">
-        <Link to="/searchplantdata">
+        <Link to="/">
           <button type="button" className="button1 btn">
             <h1>Vehicle Maintance Tracker</h1>
           </button>
