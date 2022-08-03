@@ -12,6 +12,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Calendar } from "./pages/calendar";
 import { CreateAccount } from "./pages/CreateAccount";
+import { Validate } from "./pages/test";
 
 //import { EditProfile } from "./pages/EditProfile";
 //import { ForgotPassword } from "./pages/ForgotPassword";
@@ -30,6 +31,7 @@ const Layout = () => {
           <Navbar />
             <Routes>
             <Route element={<Home />} path="/" />
+            <Route element={<Validate />} path="/test" />
             <Route element={<Calendar />} path="/calendar" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Forgot />} path="/forgot" />

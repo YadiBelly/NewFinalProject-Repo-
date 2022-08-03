@@ -7,6 +7,7 @@ import { TextField } from '@material-ui/core';
 
 export const Forgot = () => {
     const { store, actions } = useContext(Context);
+    const [ email, setEmail ] = useState('')
     const params = useParams();
    
         return (
@@ -28,7 +29,7 @@ export const Forgot = () => {
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                                    <input id="email" name="email" placeholder="email address" class="form-control" type="email" />
+                                                    <input id="email" onChange={(e)=>setEmail(e.target.value)} name="email" placeholder="email address" class="form-control" type="email" />
                                                 </div>
                                             </div>
                                             <div class="form-group text-center mt-4">
