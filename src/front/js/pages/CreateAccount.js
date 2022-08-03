@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import { TextField } from '@material-ui/core';
 // import { UploadImages } from "../component/UploadImages";
-
 
 export const CreateAccount = (props) => {
   const { store, actions } = useContext(Context);
@@ -18,7 +17,7 @@ export const CreateAccount = (props) => {
   const [password, setPasswordValue] = useState("");
   const [phone, setPhoneValue] = useState("");
   const [zip_code, setStateZipCodeValue] = useState("");
-
+  const navigate = useNavigate()
   
 
   return (
@@ -58,14 +57,11 @@ export const CreateAccount = (props) => {
         </div>  
         </div>
         <div class="text-center mt-4">
-        <button type="submit" onClick={() =>  actions.createAccount({
-              first_name,
-              last_name,
-              email,
-              password,
-              phone,
-              zip_code
-            })} class="btn btn-primary">Sign in</button>
+        <button type="submit" onClick={() =>{  
+        actions.createAccount({first_name, last_name, email, password, phone, zip_code})
+      navigate('/login')
+      }} 
+        class="btn btn-primary">Sign Up</button>
         <div>
         <Link to="/forgot">
           <a className="nav-link">Forgot your password?</a>

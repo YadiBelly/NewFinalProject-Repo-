@@ -17,6 +17,19 @@ def signup():
     db.session.commit()
     return 'sucess', 200
 
+@api.route('login', methods=['POST'])
+def login():
+    data = request.get_json()
+    if "email" not in data or data['email']=='':
+        return 'user not found'
+    if 'password' not in data or data['password']=='':
+        return 'user not found'
+    user = User.query.filter_by(email=data['email']).first()
+    if user == None or data['password'] != user.password or data['email'] != user.email:
+        return 'email or password is incorrect!'
+    else: 
+        return 'Logged in'
+
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
 
@@ -28,7 +41,7 @@ def handle_hello():
 
 @api.route('/reset', methods=["POST", "GET"])
 def reset():
-    sg = sendgrid.SendGridAPIClient()
+    sg = sendgrid.SendGridAPIClient(api_key='')
     from_email = Email("nnngozi@gmail.com")
     to_email = To("nnngozi@gmail.com")
     subject = "Sending with SendGrid is Fun"

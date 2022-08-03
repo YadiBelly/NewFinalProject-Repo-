@@ -17,7 +17,7 @@ export const Home = () => {
       <div class="container-fluid">
         <Link to="/calendar" class="navbar-brand">
           Schedule appointment
-        </Link>npm
+        </Link>
 
         <button
           class="navbar-toggler"
