@@ -38,6 +38,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						.catch((error) => console.log('error', error))
 	
 				},
+
+
+				resetPassword: (email) => {
+					fetch(process.env.BACKEND_URL + '/api/reset',{
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify(email)
+					})
+					.then((result) => console.log(result))
+					.catch((error) => console.log('error', error))
+
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

@@ -19,21 +19,9 @@ export const Home = () => {
           Schedule appointment
         </Link>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        
       </div>
-      <h1 class="uppercase">VEHICLE MAINTANCE TRACKER</h1>
-      <p></p>
-      <div>
+            <div>
         <p className="uppercase mt-5">
           <img src={vmt} />
         </p>

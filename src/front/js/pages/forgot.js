@@ -33,10 +33,8 @@ export const Forgot = () => {
                                                 </div>
                                             </div>
                                             <div class="form-group text-center mt-4">
-                                                <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit" />
-                                            </div>
-
-                                            <input type="hidden" class="hide" name="token" id="token" value="" />
+                                                <button onClick={() => actions.resetPassword({email})} class="btn btn-primary" type="submit">Reset Password</button>
+                                            </div>        
                                         </form>
 
                                     </div>

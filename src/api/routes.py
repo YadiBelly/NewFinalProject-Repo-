@@ -43,14 +43,22 @@ def handle_hello():
 def reset():
     sg = sendgrid.SendGridAPIClient(api_key='')
     from_email = Email("nnngozi@gmail.com")
-    to_email = To("nnngozi@gmail.com")
     subject = "Sending with SendGrid is Fun"
-    content = Content("text/plain", "and easy to do anywhere, even with Python")
+    data = request.get_json()
+    to_email = data['email']
+    content = Content("text/html", '<a href="https://3000-yadibelly-newfinalproje-nmj2vjpsht7.ws-us59.gitpod.io/resetpage">Reset Your Password</a>')
     mail = Mail(from_email, to_email, subject, content)
     response = sg.client.mail.send.post(request_body=mail.get())
     print(response.status_code)
     print(response.body)
     print(response.headers)
     return "Success"
-        
-        
+
+@api.route('/updatepassword/<id>', methods=["PUT"])
+def change_password(id):
+    user = User.query.get(id)
+    password = request.json['password']
+    user.password = password
+    db.session.commit()
+    return "sucess"  
+      
