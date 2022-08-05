@@ -41,7 +41,7 @@ def handle_hello():
 
 @api.route('/reset', methods=["POST", "GET"])
 def reset():
-    sg = sendgrid.SendGridAPIClient(api_key='')
+    sg = sendgrid.SendGridAPIClient(api_key='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')
     from_email = Email("nnngozi@gmail.com")
     subject = "Sending with SendGrid is Fun"
     data = request.get_json()
