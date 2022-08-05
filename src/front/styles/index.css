@@ -5,9 +5,9 @@ body {
 /************************************ NAV BAR PAGE ****************************************/
 .navbar {
   font-size: 20px;
-  background-image: url("https://i.ibb.co/LDTtk4P/dash.png");
+  background-image: url("https://i.ibb.co/10wr58D/headlight.png");
   background-size: cover;
   /* background: rgba(4, 135, 94, 0.815); */
-  height: 75px;
+  height: 100px;
   text-align: end;
 }
