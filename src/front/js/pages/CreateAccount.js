@@ -19,6 +19,15 @@ export const CreateAccount = (props) => {
   const [zip_code, setStateZipCodeValue] = useState("");
   const navigate = useNavigate()
   
+function submit() {
+  if (email == "" || first_name == "" || last_name == "" || password == "" || phone == "" || zip_code == "") {
+    alert("Fields cannot be empty")
+  } else {
+    actions.createAccount({first_name, last_name, email, password, phone, zip_code})
+    navigate('/login')
+  }
+}
+  
 
   return (
     <><form>
@@ -58,8 +67,7 @@ export const CreateAccount = (props) => {
         </div>
         <div class="text-center mt-4">
         <button type="submit" onClick={() =>{  
-        actions.createAccount({first_name, last_name, email, password, phone, zip_code})
-      navigate('/login')
+        submit()
       }} 
         class="btn btn-primary">Sign Up</button>
         <div>

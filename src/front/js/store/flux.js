@@ -58,9 +58,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
-			updatePassword: 
+			updatePassword: () => {
+				fetch(process.env.BACKEND_URL + `/api/updatepassword`, {
+					method: 'PUT',
+					headers: {'Content-Type': 'application/json'},
+					body: JSON.stringify(password)
+				})
+					.then((response) => response.json())
+					.then((result) => console.log(result))
+					.catch((error) => console.log('error', error))
+			} ,
 
-			
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
