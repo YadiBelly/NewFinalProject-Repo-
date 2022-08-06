@@ -58,6 +58,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			updatePassword: 
+
+			
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

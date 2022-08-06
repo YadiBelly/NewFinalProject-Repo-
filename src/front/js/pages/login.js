@@ -69,7 +69,7 @@ export const Login = () => {
                 email,
                 password,
               });
-              setSuccess
+              navigate('/calendar')
             }}
             class="btn btn-primary"
           >
