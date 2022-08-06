@@ -1,19 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			error: [],
+			user: {}
 		},
 		actions: {
 			createAccount: (first_name, last_name, email, password, phone, zip_code) => {
@@ -27,25 +16,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			
+			logout: () => {
+			setStore({user: {}})	
+			},
 			login: (email, password) => {
 						fetch(process.env.BACKEND_URL + '/api/login',{
 							method: 'POST',
 							headers: {'Content-Type': 'application/json'},
 							body: JSON.stringify(email, password)
 						})
-						.then((result) => console.log(result))
+						.then((response) => response.json())
+						.then((result) => result.message ? setStore({error:'Email or Password is Incorrect!'}): getActions().verifyUser(result))
 						.catch((error) => console.log('error', error))
-	
+						
 				},
 
-
+				verifyUser: (token) => {
+					fetch(process.env.BACKEND_URL + '/api/protected',{
+						method: 'GET',
+						headers: {
+							Authorization: `Bearer ${token}`
+						}
+					})
+					.then((response) => response.json())
+					.then((result) => setStore({user: result.logged_in_as}))
+					.catch((error) => console.log('error', error))
+				},
 				resetPassword: (email) => {
 					fetch(process.env.BACKEND_URL + '/api/reset',{
 						method: 'POST',
 						headers: {'Content-Type': 'application/json'},
 						body: JSON.stringify(email)
 					})
+					.then((response) => response.json())
 					.then((result) => console.log(result))
 					.catch((error) => console.log('error', error))
 
