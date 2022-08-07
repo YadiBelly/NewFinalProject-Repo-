@@ -5,9 +5,16 @@ body {
 /************************************ NAV BAR PAGE ****************************************/
 .navbar {
   font-size: 20px;
+
   background-image: url("https://i.ibb.co/10wr58D/headlight.png");
+
+  background-color: darkgrey;
+
   background-size: cover;
   /* background: rgba(4, 135, 94, 0.815); */
   height: 100px;
   text-align: end;
+}
+.h1 {
+  color: black;
 }
