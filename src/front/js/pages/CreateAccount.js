@@ -1,106 +1,85 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import { UploadImages } from "../component/UploadImages";
+import { TextField } from '@material-ui/core';
+// import { UploadImages } from "../component/UploadImages";
 
 export const CreateAccount = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
   const profileArray = store.profile;
   //*const [newProfile, setNewProfile] = useState({});//*
-  const [emailValue, setEmailValue] = useState("");
-  const [passwordValue, setPasswordValue] = useState("");
-  const [firstNameValue, setFirstNameValue] = useState("");
-  const [lastNameValue, setLastNameValue] = useState("");
-  const [phoneValue, setPhoneValue] = useState("");
-  const [stateZipCodeValue, setStateZipCodeValue] = useState("");
-
-  const handleSubmit = () => {
-    actions.createAccount({
-      email: emailValue,
-      password: passwordValue,
-      firstName: firstNameValue,
-      lastName: lastNameValue,
-      phone: phoneValue,
-      stateZipCode: stateZipCodeValue,
-    });
-  };
+  const [first_name, setFirstNameValue] = useState("");
+  const [last_name, setLastNameValue] = useState("");
+  const [email, setEmailValue] = useState("");
+  const [password, setPasswordValue] = useState("");
+  const [phone, setPhoneValue] = useState("");
+  const [zip_code, setStateZipCodeValue] = useState("");
+  const navigate = useNavigate()
+  
+function submit() {
+  if (email == "" || first_name == "" || last_name == "" || password == "" || phone == "" || zip_code == "") {
+    alert("Fields cannot be empty")
+  } else {
+    actions.createAccount({first_name, last_name, email, password, phone, zip_code})
+    navigate('/login')
+  }
+}
+  
 
   return (
-    <div className="create-account-div text-center">
-      <div className="p-5 d-flex justify-content-around row form">
-        <div className="col-5 mb-3">
-          <input
-            className="w-70"
-            type="text"
-            onChange={(e) => setEmailValue(e.target.value)}
-            placeholder="Email as username"
-            name="fname"
-          />
+    <><form>
+      <div class="form-row">
+        <div class="row justify-content-center">
+        <div class="text-center"><h4>Create an account</h4></div>
+           <div class="col-4">
+             <label for="inputEmail4">First Name</label>
+          <input type="text" onChange={(e)=> setFirstNameValue(e.target.value)} class="form-control"/>
+          </div>
+          <div class="col-4">
+          <label for="inputPassword4">Last Name</label>
+          <input type="text" onChange={(e)=> setLastNameValue(e.target.value)} class="form-control" />
+          </div>
+          <div class="row justify-content-center">
+          <div class="col-4">
+           <label for="inputEmail4">Email</label>
+          <input type="email" onChange={(e)=> setEmailValue(e.target.value)} class="form-control" />
+          </div>
+          <div class="col-4">
+          <label for="inputAddress">Zip Code</label>
+        <input type="text" onChange={(e)=> setStateZipCodeValue(e.target.value)} class="form-control" placeholder="Zip Code"/>
+          </div>
+          <div class="row justify-content-center">
+          <div class="col-4">
+           <label for="inputEmail4">Password</label>
+           <input type="password" onChange={(e)=> setPasswordValue(e.target.value)} class="form-control" />
+          </div>
+          <div class="col-4">
+          <label for="inputAddress">Phone</label>
+        <input type="text" onChange={(e)=> setPhoneValue(e.target.value)} class="form-control" placeholder="Phone Number"/>
+          </div>
+          </div>       
+          </div>
+          
+        </div>  
         </div>
-        <div className="col-5 mb-3">
-          <input
-            className="w-70"
-            type="text"
-            onChange={(e) => setPasswordValue(e.target.value)}
-            placeholder="Password"
-            name="fname"
-          />
-        </div>
-        <div className="col-5 mb-3">
-          <input
-            className="w-70"
-            type="text"
-            onChange={(e) => setFirstNameValue(e.target.value)}
-            placeholder="First Name"
-            name="fname"
-          />
-        </div>
-        <div className="col-5 mb-3">
-          <input
-            className="w-70"
-            type="text"
-            onChange={(e) => setLastNameValue(e.target.value)}
-            placeholder="Last Name"
-            name="fname"
-          />
-        </div>
-        <div className="col-5 mb-3">
-          <input
-            className="w-70"
-            type="text"
-            onChange={(e) => setPhoneValue(e.target.value)}
-            placeholder="Phone"
-            name="fname"
-          />
-        </div>
-        <div className="col-5 mb-3">
-          <input
-            className="w-70"
-            type="text"
-            onChange={(e) => setStateZipCodeValue(e.target.value)}
-            placeholder="Zip code"
-            name="fname"
-          />
-        </div>
-        <input
-          className="btn submit"
-          onClick={() => {
-            handleSubmit();
-            console.log(store.account);
-          }}
-          type="submit"
-          value="Sign Up"
-        />
+        <div class="text-center mt-4">
+        <button type="submit" onClick={() =>{  
+        submit()
+      }} 
+        class="btn btn-primary">Sign Up</button>
         <div>
-          <Link to="/forgotPassword">
-            <a className="nav-link">Forgot my password??</a>
-          </Link>
-        </div>
+        <Link to="/forgot">
+          <a className="nav-link">Forgot your password?</a>
+        </Link>
       </div>
-    </div>
+        </div> 
+        
+    </form>
+
+    </>
   );
 };
 

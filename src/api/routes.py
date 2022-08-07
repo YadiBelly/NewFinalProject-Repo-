@@ -4,9 +4,42 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-
+import sendgrid
+from sendgrid.helpers.mail import *
+import os
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
 api = Blueprint('api', __name__)
 
+@api.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    newuser = User(email=data['email'],first_name=data['first_name'],last_name=data['last_name'],password=data['password'],phone=data['phone'],zip_code=data['zip_code'])
+    db.session.add(newuser)
+    db.session.commit()
+    return 'sucess', 200
+
+@api.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    if "email" not in data or data['email']=='':
+        raise APIException('Email Not Found', status_code=400)
+    if 'password' not in data or data['password']=='':
+        raise APIException('Password Not Found', status_code=400)
+    user = User.query.filter_by(email=data['email']).first()
+    if user == None or data['password'] != user.password or data['email'] != user.email:
+        raise APIException('Email or Password is Incorrect!', status_code=400)
+    else: 
+        user = user.serialize()
+        accessToken = create_access_token(identity=user)
+        return jsonify(accessToken), 200
+
+@api.route('/protected', methods=['GET'])
+@jwt_required()
+def protected():
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user), 200
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -16,3 +49,27 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/reset', methods=["POST", "GET"])
+def reset():
+    sg = sendgrid.SendGridAPIClient(api_key='')
+    from_email = Email("nnngozi@gmail.com")
+    subject = "Password Reset"
+    data = request.get_json()
+    to_email = data['email']
+    content = Content("text/html", '<a href="https://3000-yadibelly-newfinalproje-nmj2vjpsht7.ws-us59.gitpod.io/resetpage">Reset Your Password</a>')
+    mail = Mail(from_email, to_email, subject, content)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
+    return "Success"
+
+@api.route('/updatepassword/<id>', methods=["PUT"])
+def change_password(id):
+    user = User.query.get(id)
+    password = request.json['password']
+    user.password = password
+    db.session.commit()
+    return "sucess"  
+      
